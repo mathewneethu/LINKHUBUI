@@ -1,0 +1,103 @@
+﻿@model IEnumerable<BOL.tbl_Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function ConfirmDelete()
+    {
+        return confirm('Are you sure you want to delete?');
+    }
+</script>
+
+
+<h2>List Category</h2>
+
+<div class="pull-right">
+    <div class="btn-group">
+        <button type="button" class=" btn btn-primary">Export To</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Excel", "ExportTo", new { ReportType = "Excel" })</li>
+            <li>@Html.ActionLink("PDF", "ExportTo", new { ReportType = "PDF" })</li>
+            <li>@Html.ActionLink("Word", "ExportTo", new { ReportType = "Word" })</li>
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+
+@if (TempData["msg"] != null)
+{ 
+    <h3>@TempData["msg"].ToString()</h3>
+}
+
+<table class="table table-striped table-bordered  table-hover">
+    <tr>
+        <th>
+            @Html.ActionLink("CategoryName", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), SortBy = "CategoryName", page = (ViewBag.Page == null ? "1" : ViewBag.Page) })
+        </th>
+        <th>
+            @Html.ActionLink("CategoryDesc", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), SortBy = "CategoryDesc", page = (ViewBag.Page == null ? "1" : ViewBag.Page) })
+
+        </th>
+        <th>Delete</th>
+        @*<th>Edit</th>*@
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryDesc)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, new { onclick = "return ConfirmDelete()" })
+
+
+
+            </td>
+
+
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId })
+
+
+
+            </td>*@
+
+        </tr>
+    }
+
+</table>
+
+@{
+
+    double TotalPage = @ViewBag.TotalPages;
+}
+
+<ul class="pagination">
+
+        @for (int i = 1; i <= TotalPage; i++)
+        {
+            if (i == ViewBag.Page)
+            {
+
+                <li class="page-item">@Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.SoryBy == null ? "Title" : ViewBag.SortBy), Page = i })</li>
+
+            }
+            else
+            {
+                <li> @Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.SoryBy == null ? "Title" : ViewBag.SortBy), Page = i })</li>
+
+            }
+        }
+</ul>

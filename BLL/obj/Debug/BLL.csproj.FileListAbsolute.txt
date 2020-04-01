@@ -1,0 +1,11 @@
+E:\PROJECT\LinkHubUI\BLL\bin\Debug\BLL.dll
+E:\PROJECT\LinkHubUI\BLL\bin\Debug\BLL.pdb
+E:\PROJECT\LinkHubUI\BLL\bin\Debug\BOL.dll
+E:\PROJECT\LinkHubUI\BLL\bin\Debug\DAL.dll
+E:\PROJECT\LinkHubUI\BLL\bin\Debug\EntityFramework.dll
+E:\PROJECT\LinkHubUI\BLL\bin\Debug\BOL.pdb
+E:\PROJECT\LinkHubUI\BLL\bin\Debug\DAL.pdb
+E:\PROJECT\LinkHubUI\BLL\bin\Debug\EntityFramework.xml
+E:\PROJECT\LinkHubUI\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\PROJECT\LinkHubUI\BLL\obj\Debug\BLL.dll
+E:\PROJECT\LinkHubUI\BLL\obj\Debug\BLL.pdb
